@@ -1,9 +1,12 @@
-import 'package:flutter/material.dart';
 
 class AppRoutes {
-  // Splash Screen
   static const String splashSplashScreen = '/';
 
-  // Home Screen
+  static const String navigationBar = '/navigation';
+
   static const String homeScreen = 'HomeScreen';
+
+  static const String portfolioScreen = 'PortfolioScreen';
+
+  static const String profileScreen = 'ProfileScreen';
 }

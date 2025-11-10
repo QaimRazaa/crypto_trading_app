@@ -1,18 +1,34 @@
+// 1. Updated generate_route.dart
+// File: lib/core/routes/generate_route.dart
+
 import 'package:crypto_trading_app/features/home/view/home.dart';
+import 'package:crypto_trading_app/features/personalization/view/profile.dart';
+import 'package:crypto_trading_app/features/portfolio/view/portfolio.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/splash/view/splash.dart';
+import '../../navigation_bar.dart';
 import 'app_routes.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    // SPlash Screen
+  // Splash Screen
     case AppRoutes.splashSplashScreen:
       return _buildAnimatedRoute(const SplashScreen());
 
-    //   Home Screen
+  // Navigation Bar (Main Screen)
+    case AppRoutes.navigationBar:
+      return _buildAnimatedRoute(const CustomNavigationBar());
+
+  // Home Screen (if needed separately)
     case AppRoutes.homeScreen:
       return _buildAnimatedRoute(const HomeScreen());
+
+      case AppRoutes.portfolioScreen:
+      return _buildAnimatedRoute(const PortfolioScreen());
+
+      case AppRoutes.profileScreen:
+      return _buildAnimatedRoute(const ProfileScreen());
 
     default:
       return _buildAnimatedRoute(

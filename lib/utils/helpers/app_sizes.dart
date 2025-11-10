@@ -51,4 +51,23 @@ class AppSizes {
   static double radius(double percent) => blockWidth * percent;
 
   static double icon(double percent) => blockHeight * percent;
+
+  // Responsive font size helper
+  static double responsiveFont(double baseSize, {double? wideScreenMultiplier}) {
+    final isWideScreen = screenWidth > 600;
+    if (isWideScreen) {
+      final multiplier = wideScreenMultiplier ?? 0.6;
+      return font(baseSize * multiplier);
+    }
+    return font(baseSize);
+  }
+
+  // Screen size helpers
+  static bool get isWideScreen => screenWidth > 600;
+
+  static bool get isTablet => screenWidth >= 600 && screenWidth < 1024;
+
+  static bool get isDesktop => screenWidth >= 1024;
+
+  static bool get isMobile => screenWidth < 600;
 }
