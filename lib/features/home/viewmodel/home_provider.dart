@@ -69,7 +69,6 @@ class HomeProvider with ChangeNotifier {
 
     try {
       final coins = await _coinService.fetchCoins(perPage: perPage);
-      // Apply display limit if specified
       _coins = displayLimit != null && displayLimit < coins.length
           ? coins.take(displayLimit).toList()
           : coins;
@@ -83,7 +82,6 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> refreshCoins() async {
-    // Maintain the current display limit when refreshing
     final currentLimit = _coins.length;
     await loadCoins(perPage: 50, displayLimit: currentLimit > 0 ? currentLimit : null);
   }
@@ -95,7 +93,6 @@ class HomeProvider with ChangeNotifier {
 
     try {
       final gainers = await _coinService.fetchGainers(perPage: perPage);
-      // Apply display limit if specified
       _gainers = displayLimit != null && displayLimit < gainers.length
           ? gainers.take(displayLimit).toList()
           : gainers;
@@ -109,7 +106,6 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> refreshGainers() async {
-    // Maintain the current display limit when refreshing
     final currentLimit = _gainers.length;
     await loadGainers(perPage: 50, displayLimit: currentLimit > 0 ? currentLimit : null);
   }
@@ -121,7 +117,6 @@ class HomeProvider with ChangeNotifier {
 
     try {
       final losers = await _coinService.fetchLosers(perPage: perPage);
-      // Apply display limit if specified
       _losers = displayLimit != null && displayLimit < losers.length
           ? losers.take(displayLimit).toList()
           : losers;
@@ -135,7 +130,6 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> refreshLosers() async {
-    // Maintain the current display limit when refreshing
     final currentLimit = _losers.length;
     await loadLosers(perPage: 50, displayLimit: currentLimit > 0 ? currentLimit : null);
   }

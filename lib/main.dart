@@ -17,7 +17,6 @@ void main() {
         ChangeNotifierProvider(create: (_) => TabProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
         ChangeNotifierProvider(create: (_) => CoinDetailProvider()),
-        // Add other providers here
       ],
       child: DevicePreview(
         enabled: true,
