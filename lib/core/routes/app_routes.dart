@@ -9,4 +9,8 @@ class AppRoutes {
   static const String portfolioScreen = 'PortfolioScreen';
 
   static const String profileScreen = 'ProfileScreen';
+
+  static const String rewardsScreen = 'RewardsScreen';
+
+  static const String coinDetailScreen = 'CoinDetailScreen';
 }

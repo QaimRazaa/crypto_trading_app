@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../navigation_bar.dart';
+import 'navigation_providers.dart';
 // Import other controllers/providers here as needed
 
 class AppProviders {

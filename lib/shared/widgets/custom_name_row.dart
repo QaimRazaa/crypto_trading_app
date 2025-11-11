@@ -7,7 +7,7 @@ class CustomNameRow extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const CustomNameRow({
+  const CustomNameRow({super.key, 
     required this.title,
     required this.isSelected,
     required this.onTap,

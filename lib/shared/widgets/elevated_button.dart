@@ -17,7 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
   final bool isLoading;
 
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.backgroundColor,
@@ -30,7 +30,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.width,
     this.elevation,
     this.isLoading = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

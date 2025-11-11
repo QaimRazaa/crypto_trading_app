@@ -7,7 +7,6 @@ import 'package:crypto_trading_app/utils/constants/texts.dart';
 import 'package:crypto_trading_app/utils/helpers/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../shared/widgets/coin_field.dart';
 import '../viewmodel/home_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Fetch data once when the screen opens
     Future.microtask(() =>
         Provider.of<HomeProvider>(context, listen: false).loadCoins());
   }

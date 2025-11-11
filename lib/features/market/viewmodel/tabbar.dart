@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 // Provider for Tab Management
 class TabProvider extends ChangeNotifier {

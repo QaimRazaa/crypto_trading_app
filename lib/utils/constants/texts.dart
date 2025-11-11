@@ -9,4 +9,6 @@ class AppTexts{
   static const cardano = "Cardano";
   static const tron = "TRON";
   static const tether = "Tether";
+  static const favText = "Special place for Favorite coins";
+  static const addFav = "Add you favorite coins and check here easily ";
 }

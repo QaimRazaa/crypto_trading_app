@@ -1,13 +1,14 @@
+// MarketInr.dart - Update this file
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../shared/widgets/custom_name_row.dart';
-import '../../../../shared/widgets/elevated_button.dart';
 import '../../../../shared/widgets/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images.dart';
 import '../../../../utils/helpers/app_sizes.dart';
-import '../../viewmodel/market_selection.dart';
+import '../../../home/viewmodel/home_provider.dart';
+
 class MarketInr extends StatelessWidget {
   const MarketInr({super.key});
 
@@ -22,7 +23,7 @@ class MarketInr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MarketProvider>(
+    return Consumer<HomeProvider>(
       builder: (context, provider, child) {
         return GestureDetector(
           onTap: () => showMarketBottomSheet(context),
@@ -87,57 +88,45 @@ class MarketBottomSheet extends StatelessWidget {
             padding: AppSizes.paddingAll(5),
             child: Row(
               children: [
-                SectionTitle(title: 'Markets',fontWeight: FontWeight.w700,)
+                SectionTitle(
+                  title: 'Markets',
+                  fontWeight: FontWeight.w700,
+                )
               ],
             ),
           ),
-          Consumer<MarketProvider>(
+          Consumer<HomeProvider>(
             builder: (context, provider, child) {
               return Column(
                 children: [
                   CustomNameRow(
-                    title: 'Indian - INR',
-                    isSelected: provider.selectedMarket == 'Indian - INR',
-                    onTap: () {
-                      provider.selectMarket('Indian - INR');
-                    },
-                  ),
-                  Divider(height: 1, color: Color(0xffDFE2E4)),
-                  CustomNameRow(
-                    title: 'Bitcoin - BTC',
-                    isSelected: provider.selectedMarket == 'Bitcoin - BTC',
-                    onTap: () {
-                      provider.selectMarket('Bitcoin - BTC');
+                    title: 'Pakistani - PKR',
+                    isSelected: provider.selectedMarket == 'Pakistani - PKR',
+                    onTap: () async {
+                      await provider.selectMarket('Pakistani - PKR');
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                   Divider(height: 1, color: Color(0xffDFE2E4)),
                   CustomNameRow(
                     title: 'TetherUS - USDT',
                     isSelected: provider.selectedMarket == 'TetherUS - USDT',
-                    onTap: () {
-                      provider.selectMarket('TetherUS - USDT');
+                    onTap: () async {
+                      await provider.selectMarket('TetherUS - USDT');
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                 ],
               );
             },
           ),
-
-          Padding(
-            padding: AppSizes.paddingAll(5),
-            child: CustomElevatedButton(
-              text: 'Update Market',
-              onPressed: () {Navigator.pop(context);},
-              backgroundColor: AppColors.primary,
-              textColor: AppColors.white,
-              width: double.infinity,
-            ),
-          ),
-
           SizedBox(height: AppSizes.height(2)),
         ],
       ),
     );
   }
 }
-

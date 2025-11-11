@@ -1,9 +1,9 @@
-// 1. Updated generate_route.dart
-// File: lib/core/routes/generate_route.dart
-
+import 'package:crypto_trading_app/features/coin_page/view/coin_page.dart';
 import 'package:crypto_trading_app/features/home/view/home.dart';
 import 'package:crypto_trading_app/features/personalization/view/profile.dart';
 import 'package:crypto_trading_app/features/portfolio/view/portfolio.dart';
+import 'package:crypto_trading_app/features/rewards/view/rewards.dart';
+import 'package:crypto_trading_app/features/home/data/model/coin_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/splash/view/splash.dart';
@@ -24,11 +24,18 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case AppRoutes.homeScreen:
       return _buildAnimatedRoute(const HomeScreen());
 
-      case AppRoutes.portfolioScreen:
+    case AppRoutes.portfolioScreen:
       return _buildAnimatedRoute(const PortfolioScreen());
 
-      case AppRoutes.profileScreen:
+    case AppRoutes.profileScreen:
       return _buildAnimatedRoute(const ProfileScreen());
+
+    case AppRoutes.rewardsScreen:
+      return _buildAnimatedRoute(const RewardsScreen());
+
+    case AppRoutes.coinDetailScreen:
+      final coin = settings.arguments as CoinModel;
+      return _buildAnimatedRoute(CoinDetailScreen(coin: coin));
 
     default:
       return _buildAnimatedRoute(

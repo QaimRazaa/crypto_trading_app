@@ -6,6 +6,7 @@ class AppImages {
   static String profileCard = "assets/images/profile/profilecard.png";
   static String profile = "assets/images/profile/profile.jpg";
   static String market = "assets/images/portfolio/market.png";
+  static String favImage = "assets/images/home/favimage.png";
 
 //   Icons Currency
   static String bitcoin = "assets/images/icons/currency/bitcoinicon.png";
@@ -29,8 +30,13 @@ class AppImages {
 
   static String downArrow = "assets/images/icons/downarrow.png";
 
+  static String rewardBannerOne = "assets/images/rewards/rewardbannerone.png";
+  static String rewardBannerTwo = "assets/images/rewards/rewardbannertwo.png";
+  static String rewardBannerThree = "assets/images/rewards/rewardbannerthree.png";
+
 
 
   static String chart = "assets/images/icons/charts/chart.png";
   static String redChart = "assets/images/icons/charts/redchart.png";
+  static String bigChart = "assets/images/icons/charts/bigchart.png";
 }

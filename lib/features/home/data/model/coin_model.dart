@@ -85,11 +85,48 @@ class CoinModel {
       lastUpdated: json['last_updated'] ?? '',
     );
   }
-
-  // Helper methods for formatting
-  String get formattedPrice => '\$${currentPrice.toStringAsFixed(2)}';
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'symbol': symbol,
+      'name': name,
+      'image': image,
+      'current_price': currentPrice,
+      'market_cap': marketCap,
+      'market_cap_rank': marketCapRank,
+      'fully_diluted_valuation': fullyDilutedValuation,
+      'total_volume': totalVolume,
+      'high_24h': high24h,
+      'low_24h': low24h,
+      'price_change_24h': priceChange24h,
+      'price_change_percentage_24h': priceChangePercentage24h,
+      'market_cap_change_24h': marketCapChange24h,
+      'market_cap_change_percentage_24h': marketCapChangePercentage24h,
+      'circulating_supply': circulatingSupply,
+      'total_supply': totalSupply,
+      'max_supply': maxSupply,
+      'ath': ath,
+      'ath_change_percentage': athChangePercentage,
+      'ath_date': athDate,
+      'atl': atl,
+      'atl_change_percentage': atlChangePercentage,
+      'atl_date': atlDate,
+      'roi': roi,
+      'last_updated': lastUpdated,
+    };
+  }
+  String getFormattedPrice(bool isPkr, double pkrRate) {
+    if (isPkr) {
+      final pkrPrice = currentPrice * pkrRate;
+      return 'Rs ${pkrPrice.toStringAsFixed(2)}';
+    }
+    return '\$${currentPrice.toStringAsFixed(2)}';
+  }
 
   String get formattedPercentage => '${priceChangePercentage24h >= 0 ? '+' : ''}${priceChangePercentage24h.toStringAsFixed(2)}%';
 
   bool get isPricePositive => priceChangePercentage24h >= 0;
+
+  String get formattedPrice => '\$${currentPrice.toStringAsFixed(2)}';
+
 }

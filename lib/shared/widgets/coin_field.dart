@@ -13,7 +13,7 @@ class CoinField extends StatelessWidget {
   final bool isNetworkImage; // New parameter
 
   const CoinField({
-    Key? key,
+    super.key,
     required this.coinIcon,
     required this.coinName,
     required this.coinSymbol,
@@ -23,7 +23,7 @@ class CoinField extends StatelessWidget {
     this.isPositive = true,
     this.onTap,
     this.isNetworkImage = false, // Default to asset image
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,8 @@
+import 'package:crypto_trading_app/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:crypto_trading_app/utils/helpers/app_sizes.dart';
 import 'package:crypto_trading_app/utils/constants/images.dart';
-import 'package:crypto_trading_app/utils/constants/sizes.dart';
 import 'package:crypto_trading_app/shared/widgets/coin_field.dart';
 import '../../viewmodel/home_provider.dart';
 
@@ -18,7 +18,7 @@ class _CoinListState extends State<CoinList> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<HomeProvider>(context, listen: false).loadCoins());
+        Provider.of<HomeProvider>(context, listen: false).loadCoins(displayLimit: 25));
   }
 
   @override
@@ -106,11 +106,20 @@ class _CoinListState extends State<CoinList> {
               chartImage: coin.isPricePositive
                   ? AppImages.chart
                   : AppImages.redChart,
-              price: coin.formattedPrice,
+              price: coin.getFormattedPrice(
+                provider.isPkrSelected,
+                provider.usdToPkrRate,
+              ),
               percentageChange: coin.formattedPercentage,
               isPositive: coin.isPricePositive,
               isNetworkImage: true,
-              onTap: () => print('Tapped on ${coin.name}'),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.coinDetailScreen,
+                  arguments: coin,
+                );
+              },
             ),
           );
         }).toList(),
